@@ -6,8 +6,11 @@
         </encoder>
     </appender>
 
-    <appender name="sentry" class="io.sentry.logback.SentryAppender">
-    </appender>
+    <!--
+    when Sentry is initialized in Java code, its enough to create an instance of Appender without further configuration.
+    If just Logback integration is used, DSN can be provided through options in logback.xml file
+    -->
+    <appender name="sentry" class="io.sentry.logback.SentryAppender"/>
 
     <root level="debug">
         <appender-ref ref="console"/>
