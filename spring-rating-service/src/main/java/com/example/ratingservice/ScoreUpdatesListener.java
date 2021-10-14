@@ -16,6 +16,7 @@ class ScoreUpdatesListener {
         this.ratingRepository = ratingRepository;
     }
 
+    // it is possible to turn any bean method invocation into a Sentry transaction using @SentryTransaction annotation.
     @RabbitListener(queues = "score-updates")
     @SentryTransaction(operation = "amqp")
     void handleScoreUpdate(ScoreUpdate scoreUpdate) {

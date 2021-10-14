@@ -14,6 +14,7 @@ public class JavacroBackendApplication {
         SpringApplication.run(JavacroBackendApplication.class, args);
     }
 
+    // when RestTemplate is created using RestTemplateBuilder, Sentry interceptor is automatically configured
     @Bean
     RestTemplate restTemplate(RestTemplateBuilder restTemplateBuilder) {
         return restTemplateBuilder.build();

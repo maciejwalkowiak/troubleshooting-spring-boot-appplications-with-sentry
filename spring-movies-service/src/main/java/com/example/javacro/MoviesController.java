@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+// all Spring MVC request executions are automatically turned into Sentry transactions
 @RestController
 @CrossOrigin
 public class MoviesController {

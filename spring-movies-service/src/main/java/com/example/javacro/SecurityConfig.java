@@ -10,6 +10,7 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        // user information is automatically attached to every Sentry event sent from this service
         auth.inMemoryAuthentication().withUser("maciej").password("{noop}123456").roles("USER");
     }
 

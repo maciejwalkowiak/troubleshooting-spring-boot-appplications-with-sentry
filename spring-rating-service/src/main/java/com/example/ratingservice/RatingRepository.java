@@ -8,16 +8,19 @@ import org.springframework.stereotype.Repository;
 import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
 
-@Repository
+// adding @SentrySpan annotation on the class level, turns every method invocation into a span.
 @SentrySpan
+@Repository
 public class RatingRepository {
     private static final Logger LOGGER = LoggerFactory.getLogger(RatingRepository.class);
     private final Random random = new Random();
     private final ConcurrentHashMap<Long, Integer> ratings = new ConcurrentHashMap<>();
 
     Integer findRating(Long movieId) {
+        // all info level logs are turned into breadcrumbs that get attached to Sentry events and transactions.
         LOGGER.info("Finding rating for movie: {}", movieId);
         try {
+            // simulate slow operation
             Thread.sleep(random.nextInt(2000));
         } catch (InterruptedException e) {
             throw new RuntimeException(e);

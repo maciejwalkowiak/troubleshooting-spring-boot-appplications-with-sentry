@@ -6,8 +6,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-@Component
+// adding @SentrySpan annotation on the class level, turns every method invocation into a span.
 @SentrySpan
+@Component
 class RatingService {
     private static final Logger LOGGER = LoggerFactory.getLogger(RatingService.class);
     private final RestTemplate restTemplate;

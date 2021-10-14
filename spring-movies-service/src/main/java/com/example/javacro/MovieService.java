@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@SentrySpan
 class MovieService {
     private static final Logger LOGGER = LoggerFactory.getLogger(MovieService.class);
     private final MovieRepository movieRepository;
@@ -21,6 +20,8 @@ class MovieService {
         this.ratingService = ratingService;
     }
 
+    // adding @SentrySpan annotation on the method level, turns invocation of this method into a span.
+    @SentrySpan
     List<MovieDTO> movies() {
         LOGGER.info("Loading movies");
         return movieRepository.findAll()

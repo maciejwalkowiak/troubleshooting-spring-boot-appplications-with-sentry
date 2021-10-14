@@ -1,46 +1,12 @@
 import './App.css';
 import React from "react";
 import * as Sentry from "@sentry/react";
+import Movie from "./Movie";
 
 const headers = new Headers();
 
+// for the sake of simplicity, basic auth credentials are hardcoded here
 headers.append('Authorization', 'Basic ' + btoa("maciej:123456"));
-
-
-class Rating extends React.Component {
-    render() {
-        let score = "";
-        if (!this.props.score) {
-            score = "🤷‍♂️";
-        } else {
-            for (let i = 0; i < this.props.score; i++) {
-                score += "⭐️&nbsp;";
-            }
-        }
-        return (
-            <span dangerouslySetInnerHTML={{__html: score}}></span>
-        );
-    }
-}
-
-class Movie extends React.Component {
-
-    constructor(props, context) {
-        super(props, context);
-    }
-
-    render() {
-        return (
-            <div>
-                <h3>{this.props.movie.title}</h3>
-                <div>
-                    <Rating score={this.props.movie.rating}/>
-                </div>
-                <img style={{height: 350}} src={this.props.movie.thumbnail}/>
-            </div>
-        )
-    }
-}
 
 class MovieList extends React.Component {
 
