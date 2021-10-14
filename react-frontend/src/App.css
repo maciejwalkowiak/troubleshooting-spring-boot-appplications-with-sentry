@@ -1,0 +1,43 @@
+.App {
+  padding: 10px 50px;
+  background-color: #282c34;
+  min-height: 100vh;
+  /*display: flex;*/
+  /*flex-direction: column;*/
+  /*align-items: center;*/
+  /*justify-content: center;*/
+  font-size: calc(10px + 2vmin);
+  font-family: Roboto;
+  color: white;
+}
+
+.Loading {
+  position: absolute;
+  right: 100px;
+  top: 20px;
+  width: 100px;
+  height: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-content: space-around;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.App li {
+  list-style-type: none;
+  margin-right: 20px;
+}
+
+.App ul {
+  margin: 0;
+  padding: 0;
+}
+
+.App h3 {
+  margin: 0;
+}
+
+.App .AppMenu {
+  margin-bottom: 10px;
+}
