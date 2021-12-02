@@ -1,13 +1,13 @@
 package com.example.javacro;
 
-import io.sentry.spring.tracing.SentrySpan;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.data.util.Pair;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import org.springframework.data.util.Pair;
+import org.springframework.stereotype.Service;
 
 @Service
 class MovieService {
@@ -20,8 +20,6 @@ class MovieService {
         this.ratingService = ratingService;
     }
 
-    // adding @SentrySpan annotation on the method level, turns invocation of this method into a span.
-    @SentrySpan
     List<MovieDTO> movies() {
         LOGGER.info("Loading movies");
         return movieRepository.findAll()

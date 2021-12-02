@@ -1,13 +1,11 @@
 package com.example.javacro;
 
-import io.sentry.spring.tracing.SentrySpan;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-// adding @SentrySpan annotation on the class level, turns every method invocation into a span.
-@SentrySpan
 @Component
 class RatingService {
     private static final Logger LOGGER = LoggerFactory.getLogger(RatingService.class);

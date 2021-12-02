@@ -1,15 +1,13 @@
 package com.example.ratingservice;
 
-import io.sentry.spring.tracing.SentrySpan;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Repository;
-
 import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
 
-// adding @SentrySpan annotation on the class level, turns every method invocation into a span.
-@SentrySpan
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import org.springframework.stereotype.Repository;
+
 @Repository
 public class RatingRepository {
     private static final Logger LOGGER = LoggerFactory.getLogger(RatingRepository.class);
