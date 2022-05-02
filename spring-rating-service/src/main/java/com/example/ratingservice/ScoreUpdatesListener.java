@@ -24,5 +24,5 @@ class ScoreUpdatesListener {
         ratingRepository.saveRating(scoreUpdate.movieId(), scoreUpdate.score());
     }
 
-    static record ScoreUpdate(@JsonProperty("movieId") Long movieId, @JsonProperty("score") Integer score){}
+    record ScoreUpdate(@JsonProperty("movieId") Long movieId, @JsonProperty("score") Integer score){}
 }
