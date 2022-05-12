@@ -15,7 +15,7 @@ public class Main {
         var conference = new Conference(1L, null);
 
         try {
-            LOGGER.info("Hello JavaCro!");
+            LOGGER.info("Hello JavaCro!!");
             System.out.println(conference.name().toLowerCase());
             party(conference);
         } catch (Exception e) {
