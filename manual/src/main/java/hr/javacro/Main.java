@@ -11,6 +11,7 @@ public class Main {
         Sentry.init(opts -> {
             opts.setDsn("https://7561d36ce9ea4265abf4a77deb78af3a@o420886.ingest.sentry.io/6389805");
             opts.setDebug(true);
+            opts.setRelease("1.0");
         });
         var conference = new Conference(1L, null);
 
