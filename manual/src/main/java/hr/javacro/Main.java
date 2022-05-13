@@ -25,7 +25,7 @@ public class Main {
         MDC.put("userId", "maciej");
 
         try {
-            LOGGER.info("Hello JavaCro!!2");
+            LOGGER.info("Hello JavaCro!!23");
             System.out.println(conference.name().toLowerCase());
             party(conference);
 //            throw new IllegalStateException("foooobar!");
