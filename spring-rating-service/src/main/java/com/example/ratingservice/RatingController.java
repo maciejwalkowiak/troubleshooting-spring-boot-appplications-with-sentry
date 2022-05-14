@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Random;
 
+import io.sentry.spring.tracing.SentrySpan;
+
 @RestController
 class RatingController {
     private final Random random = new Random();
@@ -16,6 +18,7 @@ class RatingController {
     }
 
     @GetMapping("/rating/{movieId}")
+    @SentrySpan
     Rating rating(@PathVariable Long movieId) {
         // fail randomly 33% of times
         if (random.nextInt() % 3 == 0) {

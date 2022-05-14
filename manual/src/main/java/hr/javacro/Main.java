@@ -26,9 +26,9 @@ public class Main {
 
         try {
             LOGGER.info("Hello JavaCro!!23");
-            System.out.println(conference.name().toLowerCase());
-            party(conference);
-//            throw new IllegalStateException("foooobar!");
+//            System.out.println(conference.name().toLowerCase());
+//            party(conference);
+            throw new IllegalStateException("foooobar!");
         } catch (Exception e) {
             LOGGER.error("Ooops", e);
         }

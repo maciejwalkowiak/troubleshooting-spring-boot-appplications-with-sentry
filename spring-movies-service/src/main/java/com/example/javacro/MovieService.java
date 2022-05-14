@@ -2,7 +2,9 @@ package com.example.javacro;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
+import io.sentry.spring.tracing.SentrySpan;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,14 +16,20 @@ class MovieService {
     private static final Logger LOGGER = LoggerFactory.getLogger(MovieService.class);
     private final MovieRepository movieRepository;
     private final RatingService ratingService;
+    private final Random random = new Random();
 
     public MovieService(MovieRepository movieRepository, RatingService ratingService) {
         this.movieRepository = movieRepository;
         this.ratingService = ratingService;
     }
 
+    @SentrySpan
     List<MovieDTO> movies() {
-        LOGGER.info("Loading movies");
+        LOGGER.info("Fetching movies from the repository");
+        // fail randomly 33% of times
+        if (random.nextInt() % 3 == 0) {
+            throw new BusinessException(BusinessException.Code.BP_2, "something went wrooong");
+        }
         return movieRepository.findAll()
                 .map(this::findRating)
                 .map(this::toDto)
