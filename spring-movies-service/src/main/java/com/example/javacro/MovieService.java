@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 
-import io.sentry.spring.tracing.SentrySpan;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,7 +22,6 @@ class MovieService {
         this.ratingService = ratingService;
     }
 
-    @SentrySpan
     List<MovieDTO> movies() {
         LOGGER.info("Fetching movies from the repository");
         // fail randomly 33% of times

@@ -1,12 +1,10 @@
 package com.example.ratingservice;
 
+import java.util.Random;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Random;
-
-import io.sentry.spring.tracing.SentrySpan;
 
 @RestController
 class RatingController {
@@ -18,7 +16,6 @@ class RatingController {
     }
 
     @GetMapping("/rating/{movieId}")
-    @SentrySpan
     Rating rating(@PathVariable Long movieId) {
         // fail randomly 33% of times
         if (random.nextInt() % 3 == 0) {

@@ -19,15 +19,5 @@
             <artifactId>logback-classic</artifactId>
             <version>1.2.7</version>
         </dependency>
-        <dependency>
-            <groupId>io.sentry</groupId>
-            <artifactId>sentry</artifactId>
-            <version>6.0.0-beta.3</version>
-        </dependency>
-        <dependency>
-            <groupId>io.sentry</groupId>
-            <artifactId>sentry-logback</artifactId>
-            <version>6.0.0-beta.3</version>
-        </dependency>
     </dependencies>
 </project>

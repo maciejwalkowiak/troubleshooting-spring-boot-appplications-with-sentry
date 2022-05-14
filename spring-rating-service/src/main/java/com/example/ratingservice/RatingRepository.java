@@ -3,7 +3,6 @@ package com.example.ratingservice;
 import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
 
-import io.sentry.spring.tracing.SentrySpan;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,7 +14,6 @@ public class RatingRepository {
     private final Random random = new Random();
     private final ConcurrentHashMap<Long, Integer> ratings = new ConcurrentHashMap<>();
 
-    @SentrySpan
     Integer findRating(Long movieId) {
         // all info level logs are turned into breadcrumbs that get attached to Sentry events and transactions.
         LOGGER.info("Finding rating for movie: {}", movieId);

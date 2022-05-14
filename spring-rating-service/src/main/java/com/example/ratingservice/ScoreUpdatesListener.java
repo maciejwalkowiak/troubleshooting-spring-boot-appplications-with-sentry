@@ -4,9 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.sentry.Sentry;
-import io.sentry.protocol.Request;
-import io.sentry.spring.tracing.SentryTransaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,16 +22,7 @@ class ScoreUpdatesListener {
     }
 
     @RabbitListener(queues = "score-updates")
-    @SentryTransaction(name = "ScoreUpdatesListener", operation = "amqp")
     void handleScoreUpdate(Message message, @Payload ScoreUpdate scoreUpdate) {
-        Sentry.configureScope(scope -> {
-            Request request = new Request();
-            request.setData(scoreUpdate);
-            request.setUrl(message.getMessageProperties().getReceivedExchange() + "/" + message.getMessageProperties().getConsumerQueue());
-            request.setHeaders(convert(message.getMessageProperties().getHeaders()));
-            scope.setTag("routingKey", message.getMessageProperties().getReceivedRoutingKey());
-            scope.setRequest(request);
-        });
         LOGGER.info("Received message: {}", message.getMessageProperties().getMessageId());
         LOGGER.error("something went wrong", new RuntimeException());
         ratingRepository.saveRating(scoreUpdate.movieId(), scoreUpdate.score());
@@ -46,6 +34,5 @@ class ScoreUpdatesListener {
         return result;
     }
 
-    static record ScoreUpdate(@JsonProperty("movieId") Long movieId, @JsonProperty("score") Integer score){}
-
+    record ScoreUpdate(@JsonProperty("movieId") Long movieId, @JsonProperty("score") Integer score){}
 }
