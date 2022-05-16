@@ -18,9 +18,9 @@ class RatingController {
     @GetMapping("/rating/{movieId}")
     Rating rating(@PathVariable Long movieId) {
         // fail randomly 33% of times
-        if (random.nextInt() % 3 == 0) {
-            throw new IllegalStateException("something went wrooong");
-        }
+        // if (random.nextInt() % 3 == 0) {
+        //    throw new IllegalStateException("something went wrooong");
+        // }
         var score = ratingRepository.findRating(movieId);
         return new Rating(movieId, score);
     }
